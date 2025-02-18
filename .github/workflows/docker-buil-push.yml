@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - addex
+      - master
 
 jobs:
   build:
@@ -36,13 +36,13 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/${{ env.REPO_OWNER }}/your-image-name:latest
-            ghcr.io/${{ env.REPO_OWNER }}/your-image-name:${{ github.sha }}
+            ghcr.io/${{ env.REPO_OWNER }}/student:latest
+            ghcr.io/${{ env.REPO_OWNER }}/student:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
 
       - name: Print Image Tags
-        run: echo "Image pushed to GHCR with latest and SHA: ${{ github.sha }}"
+        run: echo "Image pushed to GHCR with latest and SHA:${{ github.sha }}"
       # - name: Build Docker image
       #   run: |
       #     docker build -t ghcr.io/${{ env.REPO_OWNER }}/addex_app:${{ github.sha }} .
